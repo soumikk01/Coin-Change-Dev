@@ -1,35 +1,35 @@
 // Utilities
-function parseDenoms(text){
-  return text.split(',').map(x=>parseInt(x.trim())).filter(x=>!isNaN(x) && x>0).sort((a,b)=>a-b);
+function parseDenoms(text) {
+  return text.split(',').map(x => parseInt(x.trim())).filter(x => !isNaN(x) && x > 0).sort((a, b) => a - b);
 }
-
-function greedyChange(amount, coins){
+// Greedy Change Algorithm 
+function greedyChange(amount, coins) {
   let remaining = amount;
   const used = [];
-  const coinsSorted = [...coins].sort((a,b)=>b-a);
-  for(const c of coinsSorted){
+  const coinsSorted = [...coins].sort((a, b) => b - a);
+  for (const c of coinsSorted) {
     const count = Math.floor(remaining / c);
-    for(let i=0;i<count;i++) used.push(c);
-    remaining -= count*c;
+    for (let i = 0; i < count; i++) used.push(c);
+    remaining -= count * c;
   }
-  return {used, remaining};
+  return { used, remaining };
 }
-
-function dpMinCoinsList(amount, coins){
+// Dynamic Programming Change Algorithm
+function dpMinCoinsList(amount, coins) {
   const INF = 1e9;
-  const dp = Array(amount+1).fill(INF);
-  const choice = Array(amount+1).fill(-1);
+  const dp = Array(amount + 1).fill(INF);
+  const choice = Array(amount + 1).fill(-1);
   dp[0] = 0;
-  for(let i=1;i<=amount;i++){
-    for(const c of coins){
-      if(c<=i && dp[i-c]+1 < dp[i]){ dp[i] = dp[i-c]+1; choice[i]=c; }
+  for (let i = 1; i <= amount; i++) {
+    for (const c of coins) {
+      if (c <= i && dp[i - c] + 1 < dp[i]) { dp[i] = dp[i - c] + 1; choice[i] = c; }
     }
   }
-  if(dp[amount] >= INF) return {count:-1, used:[], possible:false};
+  if (dp[amount] >= INF) return { count: -1, used: [], possible: false };
   const used = [];
   let cur = amount;
-  while(cur>0){ used.push(choice[cur]); cur -= choice[cur]; }
-  return {count:dp[amount], used, possible:true};
+  while (cur > 0) { used.push(choice[cur]); cur -= choice[cur]; }
+  return { count: dp[amount], used, possible: true };
 }
 
 // DOM refs
@@ -50,24 +50,24 @@ const customDenomsInput = document.getElementById('customDenoms');
 const ctx = document.getElementById('chart').getContext('2d');
 let chart = null;
 
-function renderChips(coins){
+function renderChips(coins) {
   denomChips.innerHTML = '';
-  for(const c of coins){
-    const el = document.createElement('div'); el.className='chip'; el.textContent = c; denomChips.appendChild(el);
+  for (const c of coins) {
+    const el = document.createElement('div'); el.className = 'chip'; el.textContent = c; denomChips.appendChild(el);
   }
 }
 
-function getCurrentDenoms(){
-  return customDenomsInput.classList.contains('show') && customDenomsInput.value.trim() 
-    ? customDenomsInput.value.trim() 
+function getCurrentDenoms() {
+  return customDenomsInput.classList.contains('show') && customDenomsInput.value.trim()
+    ? customDenomsInput.value.trim()
     : currentDenoms;
 }
 
-function showResults(){
+function showResults() {
   const amount = Math.max(0, Math.floor(Number(amountInput.value) || 0));
   const denomsStr = getCurrentDenoms();
   const coins = parseDenoms(denomsStr);
-  if(coins.length===0){ alert('Please enter at least one denomination (positive integers).'); return; }
+  if (coins.length === 0) { alert('Please enter at least one denomination (positive integers).'); return; }
   currentDenoms = denomsStr;
   customDenomsInput.value = denomsStr;
   renderChips(coins);
@@ -77,7 +77,7 @@ function showResults(){
 
   counts.innerHTML = `<small class="muted">Greedy:</small> <b>${g.used.length}</b> &nbsp; | &nbsp; <small class="muted">DP:</small> <b>${dp.count}</b>`;
 
-  greedyBox.style.display = 'flex'; dpBox.style.display='flex'; breakdown.style.display='block';
+  greedyBox.style.display = 'flex'; dpBox.style.display = 'flex'; breakdown.style.display = 'block';
 
   greedyBox.innerHTML = `<div><b>Greedy</b><div style="font-size:13px;color:var(--muted);margin-top:6px">${g.used.join(' + ') || '—'}</div></div><div>${g.used.length} coins</div>`;
   dpBox.innerHTML = `<div><b>Dynamic Programming</b><div style="font-size:13px;color:var(--muted);margin-top:6px">${dp.used.join(' + ') || '—'}</div></div><div>${dp.count}</div>`;
@@ -86,56 +86,56 @@ function showResults(){
   updateSingleChart(amount, coins, g.used.length, dp.count);
 }
 
-function updateSingleChart(amount, coins, greedyCount, dpCount){
-  const labels = ['Greedy','DP'];
-  const data = [greedyCount, dpCount<0?0:dpCount];
-  if(chart){ 
-    chart.data.labels = labels; 
-    chart.data.datasets[0].data = data; 
-    chart.update('active'); 
-    return; 
+function updateSingleChart(amount, coins, greedyCount, dpCount) {
+  const labels = ['Greedy', 'DP'];
+  const data = [greedyCount, dpCount < 0 ? 0 : dpCount];
+  if (chart) {
+    chart.data.labels = labels;
+    chart.data.datasets[0].data = data;
+    chart.update('active');
+    return;
   }
-  chart = new Chart(ctx,{
-    type:'bar',
-    data:{labels, datasets:[{label:`Coins for ${amount}`, data, backgroundColor: ['rgba(124,58,237,0.8)','rgba(59,130,246,0.8)']}]},
-    options:{
+  chart = new Chart(ctx, {
+    type: 'bar',
+    data: { labels, datasets: [{ label: `Coins for ${amount}`, data, backgroundColor: ['rgba(124,58,237,0.8)', 'rgba(59,130,246,0.8)'] }] },
+    options: {
       animation: {
         duration: 1500,
         easing: 'easeOutQuart'
       },
-      scales:{y:{beginAtZero:true, precision:0}},plugins:{legend:{display:false}}
+      scales: { y: { beginAtZero: true, precision: 0 } }, plugins: { legend: { display: false } }
     }
   });
 }
 
-function plotRange(maxAmount = 200){
+function plotRange(maxAmount = 200) {
   const denomsStr = getCurrentDenoms();
   const coins = parseDenoms(denomsStr);
-  if(coins.length===0){ alert('Enter denominations first.'); return; }
-  const amounts = Array.from({length:maxAmount}, (_,i)=>i+1);
-  const greedyCounts = amounts.map(a=>greedyChange(a, coins).used.length);
-  const dpCounts = amounts.map(a=>dpMinCoinsList(a, coins).count);
+  if (coins.length === 0) { alert('Enter denominations first.'); return; }
+  const amounts = Array.from({ length: maxAmount }, (_, i) => i + 1);
+  const greedyCounts = amounts.map(a => greedyChange(a, coins).used.length);
+  const dpCounts = amounts.map(a => dpMinCoinsList(a, coins).count);
 
   // new line chart
-  if(chart) chart.destroy();
+  if (chart) chart.destroy();
   chart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: amounts,
       datasets: [
-        { 
-          label: 'Greedy', 
-          data: greedyCounts, 
-          tension: 0.2, 
+        {
+          label: 'Greedy',
+          data: greedyCounts,
+          tension: 0.2,
           pointRadius: 2,
           borderColor: 'rgba(124,58,237,0.8)',
           backgroundColor: 'rgba(124,58,237,0.1)',
           fill: false
         },
-        { 
-          label: 'DP', 
-          data: dpCounts, 
-          tension: 0.2, 
+        {
+          label: 'DP',
+          data: dpCounts,
+          tension: 0.2,
           pointRadius: 2,
           borderColor: 'rgba(59,130,246,0.8)',
           backgroundColor: 'rgba(59,130,246,0.1)',
@@ -168,9 +168,9 @@ function plotRange(maxAmount = 200){
 }
 
 // Customize button functionality
-customizeBtn.addEventListener('click', ()=>{
+customizeBtn.addEventListener('click', () => {
   const isShowing = customDenomsInput.classList.contains('show');
-  if(isShowing){
+  if (isShowing) {
     customDenomsInput.classList.remove('show');
     customizeBtn.textContent = 'Customize';
     customizeBtn.classList.remove('active');
@@ -178,7 +178,7 @@ customizeBtn.addEventListener('click', ()=>{
     const denomsStr = customDenomsInput.value.trim() || currentDenoms;
     currentDenoms = denomsStr;
     const coins = parseDenoms(denomsStr);
-    if(coins.length > 0){
+    if (coins.length > 0) {
       renderChips(coins);
     }
   } else {
@@ -190,12 +190,12 @@ customizeBtn.addEventListener('click', ()=>{
 });
 
 // Apply on Enter key in custom input
-customDenomsInput.addEventListener('keypress', (e)=>{
-  if(e.key === 'Enter'){
+customDenomsInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
     const denomsStr = customDenomsInput.value.trim() || currentDenoms;
     currentDenoms = denomsStr;
     const coins = parseDenoms(denomsStr);
-    if(coins.length > 0){
+    if (coins.length > 0) {
       renderChips(coins);
       customDenomsInput.classList.remove('show');
       customizeBtn.textContent = 'Customize';
@@ -206,7 +206,7 @@ customDenomsInput.addEventListener('keypress', (e)=>{
   }
 });
 
-runBtn.addEventListener('click', ()=>{
+runBtn.addEventListener('click', () => {
   // Remove active class from both buttons
   runBtn.classList.remove('active');
   rangeBtn.classList.remove('active');
@@ -214,7 +214,7 @@ runBtn.addEventListener('click', ()=>{
   runBtn.classList.add('active');
   showResults();
 });
-rangeBtn.addEventListener('click', ()=>{
+rangeBtn.addEventListener('click', () => {
   // Remove active class from both buttons
   runBtn.classList.remove('active');
   rangeBtn.classList.remove('active');
@@ -229,9 +229,9 @@ document.getElementById('lastUpdated').textContent = new Date().toLocaleDateStri
 // Terms toggle functionality
 const termsToggle = document.getElementById('termsToggle');
 const termsContent = document.getElementById('termsContent');
-termsToggle.addEventListener('click', ()=>{
+termsToggle.addEventListener('click', () => {
   const isExpanded = termsContent.classList.contains('expanded');
-  if(isExpanded){
+  if (isExpanded) {
     termsContent.classList.remove('expanded');
     termsToggle.textContent = 'Show details';
   } else {
@@ -240,57 +240,18 @@ termsToggle.addEventListener('click', ()=>{
   }
 });
 
-// Loading effect - hide when page is fully loaded
-function hideLoader(){
-  const loader = document.getElementById('loaderOverlay');
-  const body = document.body;
-  
-  // Wait for all resources to load
-  if(document.readyState === 'complete'){
-    setTimeout(() => {
-      loader.classList.add('hidden');
-      body.classList.remove('loading');
-    }, 800); // Show loader for at least 800ms for smooth effect
-  } else {
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        loader.classList.add('hidden');
-        body.classList.remove('loading');
-      }, 800);
-    });
-  }
-}
-
-// Hide loader when page is ready
-if(document.readyState === 'loading'){
-  document.addEventListener('DOMContentLoaded', hideLoader);
-} else {
-  hideLoader();
-}
-
-// Also hide on window load (for images, fonts, etc.)
-window.addEventListener('load', () => {
-  const loader = document.getElementById('loaderOverlay');
-  if(!loader.classList.contains('hidden')){
-    setTimeout(() => {
-      loader.classList.add('hidden');
-      document.body.classList.remove('loading');
-    }, 300);
-  }
-});
-
 // initial render
 renderChips(parseDenoms(currentDenoms));
 // create a minimal initial chart
 chart = new Chart(ctx, {
-  type:'bar', 
-  data:{labels:['Greedy','DP'], datasets:[{label:'Coins', data:[0,0], backgroundColor: ['rgba(124,58,237,0.8)','rgba(59,130,246,0.8)']}]}, 
-  options:{
+  type: 'bar',
+  data: { labels: ['Greedy', 'DP'], datasets: [{ label: 'Coins', data: [0, 0], backgroundColor: ['rgba(124,58,237,0.8)', 'rgba(59,130,246,0.8)'] }] },
+  options: {
     animation: {
       duration: 1500,
       easing: 'easeOutQuart'
     },
-    scales:{y:{beginAtZero:true, precision:0}},
-    plugins:{legend:{display:false}}
+    scales: { y: { beginAtZero: true, precision: 0 } },
+    plugins: { legend: { display: false } }
   }
 });

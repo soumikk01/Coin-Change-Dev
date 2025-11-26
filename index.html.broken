@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Minimum Coin Change — Greedy vs DP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="common.css">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- Blue coin gradient -->
+            <linearGradient id="blueCoinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
+            </linearGradient>
+            <!-- Pink coin gradient -->
+            <linearGradient id="pinkCoinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#f472b6;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#ec4899;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#db2777;stop-opacity:1" />
+            </linearGradient>
+            <!-- Blue arrow gradient -->
+            <linearGradient id="blueArrowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+            </linearGradient>
+            <!-- Pink arrow gradient -->
+            <linearGradient id="pinkArrowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#f472b6;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+            </linearGradient>
+            <!-- Highlight for 3D effect -->
+            <radialGradient id="coinHighlight" cx="30%" cy="30%">
+              <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.4" />
+              <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+            </radialGradient>
+            <!-- Arrow markers -->
+            <marker id="arrowhead-blue" markerWidth="12" markerHeight="12" refX="10" refY="3" orient="auto">
+              <polygon points="0 0, 12 3, 0 6" fill="url(#blueArrowGrad)" />
+            </marker>
+            <marker id="arrowhead-pink" markerWidth="12" markerHeight="12" refX="10" refY="3" orient="auto">
+              <polygon points="0 0, 12 3, 0 6" fill="url(#pinkArrowGrad)" />
+            </marker>
+          </defs>
+
+          <!-- Pink coin (behind, slightly offset) -->
+          <circle cx="65" cy="55" r="20" fill="url(#pinkCoinGrad)" />
+          <circle cx="65" cy="55" r="20" fill="url(#coinHighlight)" />
+          <circle cx="65" cy="55" r="16" fill="url(#pinkCoinGrad)" />
+          <circle cx="65" cy="55" r="12" fill="url(#coinHighlight)" />
+          <circle cx="65" cy="55" r="9" fill="url(#pinkCoinGrad)" opacity="0.9" />
+
+          <!-- Blue coin (in front, overlapping) -->
+          <circle cx="55" cy="50" r="20" fill="url(#blueCoinGrad)" />
+          <circle cx="55" cy="50" r="20" fill="url(#coinHighlight)" />
+          <circle cx="55" cy="50" r="16" fill="url(#blueCoinGrad)" />
+          <circle cx="55" cy="50" r="12" fill="url(#coinHighlight)" />
+          <circle cx="55" cy="50" r="9" fill="url(#blueCoinGrad)" opacity="0.9" />
+
+          <!-- Blue curved arrow (clockwise from bottom-left to top-right) -->
+          <path d="M 15 95 Q 25 65, 45 55 Q 65 45, 85 35" stroke="url(#blueArrowGrad)" stroke-width="5" fill="none"
+            stroke-linecap="round" marker-end="url(#arrowhead-blue)" />
+
+          <!-- Pink curved arrow (counter-clockwise from top-right to bottom-left) -->
+          <path d="M 105 35 Q 85 45, 65 55 Q 45 65, 15 95" stroke="url(#pinkArrowGrad)" stroke-width="5" fill="none"
+            stroke-linecap="round" marker-end="url(#arrowhead-pink)" />
+
+          <!-- Shadow for 3D depth effect -->
+          <ellipse cx="55" cy="54" rx="20" ry="5" fill="rgba(0,0,0,0.15)" />
+          <ellipse cx="65" cy="59" rx="20" ry="5" fill="rgba(0,0,0,0.15)" />
+        </svg>
+      </div>
+      <div>
+        <h1>Minimum Coin Change — Interactive</h1>
+        <p class="lead">Compare Greedy vs Dynamic Programming. Try custom denominations, see breakdown and charts.</p>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <div>
+          <div class="section-title">Input Amount</div>
+          <input id="amount" type="number" min="0" placeholder="Pass Inputs" />
+          <small class="muted">Enter the amount to make (e.g. 93)</small>
+        </div>
+
+        <div style="margin-top:12px" class="row">
+          <button id="run">Compute</button>
+          <button id="rangePlot" class="ghost">Plot 1–200</button>
+          <button id="saveBtn" class="ghost">💾 Save</button>
+        </div>
+
+        <div class="footer">
+          Tip: Use the <em>Plot 1–200</em> to visualize how coin counts differ across amounts.
+        </div>
+      </div>
+
+      <div class="card denom-background">
+        <div class="section-title">Denomination set</div>
+        <div id="denomChips" class="denom-list"></div>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <button class="customize-btn" id="customizeBtn">Customize</button>
+          <input type="text" id="customDenoms" class="customize-input" placeholder="e.g., 1,2,5,10,20,50,100,500,2000"
+            value="1,2,5,10,20,50,100,500,2000" />
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="results">
+          <div class="section-title">Results</div>
+          <div id="summary" class="result-line">
+            <div><b>Run to see results</b></div>
+            <div id="counts"></div>
+          </div>
+
+          <div id="breakdown" style="display:none">
+            <div class="section-title">Breakdown</div>
+            <h2>Terms and Conditions</h2>
+            <p>By using this calculator, you agree to our terms. <span class="terms-toggle" id="termsToggle">Show
+                details</span></p>
+            <ul>
+              <li><strong>Purpose:</strong> Educational tool for comparing Greedy vs DP algorithms.</li>
+              <li><strong>Accuracy:</strong> Results provided "as is" without warranty.</li>
+              <li><strong>Use at Your Own Risk:</strong> Educational purposes only.</li>
+              <li><strong>No Financial Advice:</strong> Purely algorithmic demonstration.</li>
+              <li><strong>Data Privacy:</strong> All calculations performed locally in your browser.</li>
+              <li><strong>Modifications:</strong> We reserve the right to modify this tool at any time.</li>
+              <li><strong>Limitation of Liability:</strong> No liability for damages arising from use.</li>
+            </ul>
+            <p style="margin-top:8px;"><strong>Last Updated:</strong> <span id="lastUpdated"></span></p>
+          </div>
+        </div>
+
+        <!-- Chart.js CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="common.js"></script>
+</body>
+
+</html>
