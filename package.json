@@ -1,0 +1,16 @@
+{
+  "name": "coinchangedev",
+  "version": "1.0.0",
+  "description": "college project",
+  "repository": {
+    "type": "git",
+    "url": "Coin-Change-Dev"
+  },
+  "license": "ISC",
+  "author": "Soumik Biswas",
+  "type": "commonjs",
+  "main": "login.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
