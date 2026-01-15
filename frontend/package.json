@@ -1,12 +1,24 @@
 {
-    "name": "coinchanger-frontend",
-    "version": "1.0.0",
-    "description": "Coin Change Calculator Frontend",
-    "scripts": {
-        "dev": "npx serve -l 3000",
-        "start": "npx serve -l 3000"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC"
+  "name": "coinchanger-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "chart.js": "^4.4.1",
+    "react-chartjs-2": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin-react": "^4.2.0",
+    "vite": "^5.0.0"
+  }
 }

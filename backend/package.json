@@ -1,25 +1,18 @@
 {
-  "name": "backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "nodemon server.js",
-    "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "dependencies": {
-    "bcryptjs": "^3.0.3",
-    "cors": "^2.8.5",
-    "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.0.1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.11"
-  }
+    "name": "coinchanger-backend",
+    "version": "1.0.0",
+    "description": "Backend API for CoinChanger with SQLite database",
+    "main": "server.js",
+    "type": "commonjs",
+    "scripts": {
+        "dev": "node server.js",
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "cors": "^2.8.5",
+        "express": "^4.18.2",
+        "jsonwebtoken": "^9.0.2",
+        "sql.js": "^1.9.0"
+    }
 }

@@ -1,0 +1,67 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(135deg, #fff5f5 0%, #ffeef0 25%, #fff0f5 50%, #fff5f5 75%, #ffeef0 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    color: #1f2937;
+    min-height: 100vh;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* CSS Variables */
+:root {
+    --primary-blue: #3b82f6;
+    --primary-blue-light: #60a5fa;
+    --primary-blue-dark: #2563eb;
+    --primary-pink: #ec4899;
+    --primary-pink-light: #f472b6;
+    --primary-pink-dark: #db2777;
+    --purple: #a855f7;
+    --purple-light: #c084fc;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --border: rgba(236, 72, 153, 0.2);
+    --transition-speed: 0.3s;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--primary-pink);
+    outline-offset: 2px;
+}
