@@ -1,4 +1,4 @@
-import './PageSkeleton.css';
+import './PageSkeleton.scss';
 
 function PageSkeleton() {
   return (

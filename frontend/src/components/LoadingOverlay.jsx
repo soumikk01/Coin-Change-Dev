@@ -1,4 +1,4 @@
-import './LoadingOverlay.css';
+import './LoadingOverlay.scss';
 
 function LoadingOverlay({ active }) {
   if (!active) return null;

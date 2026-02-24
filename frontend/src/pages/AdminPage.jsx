@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Background from '../components/Background';
 import Navbar from '../components/Navbar';
-import './AdminPage.css';
+import './AdminPage.scss';
 
 const API_URL = 'http://localhost:5000/api';
 

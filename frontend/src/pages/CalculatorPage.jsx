@@ -17,7 +17,7 @@ import {
   greedyChange,
   dpMinCoinsList,
 } from '../utils/coinAlgorithms';
-import './CalculatorPage.css';
+import './CalculatorPage.scss';
 
 // Register ChartJS components
 ChartJS.register(

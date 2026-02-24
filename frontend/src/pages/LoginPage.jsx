@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import Background from '../components/Background';
 import Logo from '../components/Logo';
 import PageSkeleton from '../components/PageSkeleton';
-import './LoginPage.css';
+import './LoginPage.scss';
 
 const API_URL = 'http://localhost:5000/api';
 
