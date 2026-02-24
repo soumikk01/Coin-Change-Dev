@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import Background from '../components/Background';
 import Logo from '../components/Logo';
-import LoadingOverlay from '../components/LoadingOverlay';
+import PageSkeleton from '../components/PageSkeleton';
 import './LoginPage.css';
 
 const API_URL = 'http://localhost:5000/api';
@@ -144,10 +144,13 @@ function LoginPage() {
     );
   };
 
+  if (loading) {
+    return <PageSkeleton />;
+  }
+
   return (
     <>
       <Background />
-      <LoadingOverlay active={loading} />
 
       <div className="login-container">
         <div className="login-card">
