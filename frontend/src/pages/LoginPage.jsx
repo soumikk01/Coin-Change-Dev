@@ -166,8 +166,13 @@ function LoginPage() {
       localStorage.setItem('userName', data.user.name);
       localStorage.setItem('authToken', data.token);
       localStorage.setItem('userId', data.user.id);
+      localStorage.setItem('userRole', data.user.role || 'user');
 
-      navigate('/calculator');
+      if (data.user.role === 'admin') {
+        navigate('/admin');
+      } else {
+        navigate('/calculator');
+      }
     } catch (error) {
       setLoading(false);
       alert(error.message || 'Signup failed. Please try again.');
