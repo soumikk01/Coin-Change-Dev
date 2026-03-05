@@ -4,10 +4,10 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(255, 182, 193, 0.25);
+  background: rgba(240, 249, 255, 0.4);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 192, 203, 0.3);
-  box-shadow: 0 4px 6px rgba(255, 182, 193, 0.1);
+  border-bottom: 1px solid rgba(186, 230, 253, 0.3);
+  box-shadow: 0 4px 6px rgba(186, 230, 253, 0.1);
   padding: 16px 24px;
 
   &-container {
@@ -31,12 +31,12 @@
     font-size: 32px;
     font-weight: 800;
     letter-spacing: -0.5px;
-    background: linear-gradient(135deg, #3b82f6 0%, #ec4899 50%, #a855f7 100%);
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #0ea5e9 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 2px 8px rgba(236, 72, 153, 0.4));
+    filter: drop-shadow(0 2px 8px rgba(37, 99, 235, 0.3));
     animation: gradientFlow 3s ease infinite;
     transition: transform 0.3s ease;
 
@@ -96,19 +96,19 @@
 
 .logout-btn {
   padding: 8px 16px;
-  background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
   color: white;
   border: none;
   border-radius: 20px;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(236, 72, 153, 0.3);
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
   transition: all 0.2s ease;
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.4);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
   }
 }
 
@@ -117,7 +117,7 @@
   align-items: center;
   gap: 6px;
   padding: 8px 14px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
   color: white;
   border: none;
   border-radius: 20px;
@@ -129,7 +129,7 @@
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.4);
   }
 
   svg {

@@ -17,11 +17,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(
     135deg,
-    #fff5f5 0%,
-    #ffeef0 25%,
-    #fff0f5 50%,
-    #fff5f5 75%,
-    #ffeef0 100%
+    #f0f7ff 0%,
+    #e0f0ff 25%,
+    #f0faff 50%,
+    #f0f7ff 75%,
+    #e0f0ff 100%
   );
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
@@ -45,18 +45,15 @@ body {
 
 /* CSS Variables */
 :root {
-  --primary-blue: #3b82f6;
+  --primary-blue: #2563eb;
   --primary-blue-light: #60a5fa;
-  --primary-blue-dark: #2563eb;
-  --primary-pink: #ec4899;
-  --primary-pink-light: #f472b6;
-  --primary-pink-dark: #db2777;
-  --purple: #a855f7;
-  --purple-light: #c084fc;
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
-  --text-muted: #9ca3af;
-  --border: rgba(236, 72, 153, 0.2);
+  --primary-blue-dark: #1e3a8a;
+  --secondary-blue: #3b82f6;
+  --accent-blue: #0ea5e9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --border: rgba(37, 99, 235, 0.15);
   --transition-speed: 0.3s;
 }
 
@@ -74,6 +71,6 @@ body {
 button:focus-visible,
 a:focus-visible,
 input:focus-visible {
-  outline: 2px solid var(--primary-pink);
+  outline: 2px solid var(--primary-blue);
   outline-offset: 2px;
 }

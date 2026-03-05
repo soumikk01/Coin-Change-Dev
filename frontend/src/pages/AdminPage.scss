@@ -43,7 +43,7 @@
 .admin-icon {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -80,19 +80,19 @@
 .stat-card {
   background: linear-gradient(
     135deg,
-    rgba(102, 126, 234, 0.1) 0%,
-    rgba(118, 75, 162, 0.1) 100%
+    rgba(37, 99, 235, 0.08) 0%,
+    rgba(59, 130, 246, 0.08) 100%
   );
   border-radius: 16px;
   padding: 20px;
   text-align: center;
-  border: 1px solid rgba(102, 126, 234, 0.2);
+  border: 1px solid rgba(37, 99, 235, 0.15);
 }
 
 .stat-number {
   font-size: 36px;
   font-weight: 700;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -120,7 +120,7 @@
 }
 
 .users-table thead {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
 }
 
 .users-table th {
@@ -147,7 +147,7 @@
 }
 
 .users-table tbody tr:hover {
-  background: rgba(102, 126, 234, 0.05);
+  background: rgba(37, 99, 235, 0.05);
 }
 
 .users-table tbody tr:last-child {
@@ -174,7 +174,7 @@
 .user-avatar {
   width: 36px;
   height: 36px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -234,8 +234,8 @@
 .spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid rgba(102, 126, 234, 0.2);
-  border-top-color: #667eea;
+  border: 3px solid rgba(37, 99, 235, 0.2);
+  border-top-color: #2563eb;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 16px;
@@ -257,7 +257,7 @@
 .back-button {
   margin-top: 16px;
   padding: 12px 24px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
   color: white;
   border: none;
   border-radius: 10px;
@@ -270,7 +270,7 @@
 
 .back-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
 }
 
 /* Footer */
@@ -293,7 +293,7 @@
 }
 
 .back-link:hover {
-  color: #667eea;
+  color: #2563eb;
 }
 
 .refresh-button {
@@ -301,9 +301,9 @@
   align-items: center;
   gap: 8px;
   padding: 10px 20px;
-  background: rgba(102, 126, 234, 0.1);
-  color: #667eea;
-  border: 1px solid rgba(102, 126, 234, 0.2);
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+  border: 1px solid rgba(37, 99, 235, 0.2);
   border-radius: 10px;
   font-weight: 500;
   cursor: pointer;
@@ -311,7 +311,7 @@
 }
 
 .refresh-button:hover {
-  background: rgba(102, 126, 234, 0.2);
+  background: rgba(37, 99, 235, 0.2);
   transform: translateY(-1px);
 }
 
@@ -351,10 +351,10 @@
 .tab-btn {
   flex: 1;
   padding: 14px 20px;
-  border: 2px solid rgba(102, 126, 234, 0.2);
+  border: 2px solid rgba(37, 99, 235, 0.15);
   border-radius: 12px;
   background: white;
-  color: #64748b;
+  color: #475569;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -362,12 +362,12 @@
 }
 
 .tab-btn:hover {
-  border-color: #667eea;
-  color: #667eea;
+  border-color: #3b82f6;
+  color: #3b82f6;
 }
 
 .tab-btn.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
   color: white;
   border-color: transparent;
 }
@@ -417,8 +417,8 @@
 .coin-chip {
   display: inline-block;
   padding: 4px 10px;
-  background: rgba(102, 126, 234, 0.1);
-  color: #667eea;
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
   border-radius: 12px;
   font-size: 12px;
   font-weight: 500;

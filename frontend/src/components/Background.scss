@@ -16,15 +16,15 @@
   animation: float 25s ease-in-out infinite;
 }
 
-/* Deep Pink Bubble - Top Left */
+/* Dark Blue Bubble - Top Left */
 .orb-1 {
   width: 500px;
   height: 500px;
   background: radial-gradient(
     circle at 30% 30%,
-    #f472b6 0%,
-    #ec4899 30%,
-    #db2777 60%,
+    #3b82f6 0%,
+    #2563eb 30%,
+    #1e40af 60%,
     transparent 100%
   );
   top: -15%;
@@ -50,15 +50,15 @@
   animation-delay: -8s;
 }
 
-/* Purple Bubble - Center */
+/* Light Blue Bubble - Center */
 .orb-3 {
   width: 380px;
   height: 380px;
   background: radial-gradient(
     circle at 35% 35%,
-    #c084fc 0%,
-    #a855f7 30%,
-    #9333ea 60%,
+    #60a5fa 0%,
+    #3b82f6 30%,
+    #2563eb 60%,
     transparent 100%
   );
   top: 45%;
@@ -68,15 +68,15 @@
   animation-delay: -16s;
 }
 
-/* Rose Pink Bubble - Top Right */
+/* Sky Blue Bubble - Top Right */
 .orb-4 {
   width: 350px;
   height: 350px;
   background: radial-gradient(
     circle at 30% 30%,
-    #fda4af 0%,
-    #fb7185 30%,
-    #f43f5e 60%,
+    #7dd3fc 0%,
+    #38bdf8 30%,
+    #0ea5e9 60%,
     transparent 100%
   );
   top: 10%;
@@ -137,7 +137,7 @@
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #ec4899, #3b82f6);
+  background: linear-gradient(135deg, #3b82f6, #0ea5e9);
   opacity: 0.2;
   animation: coinFloat 12s ease-in-out infinite;
 }

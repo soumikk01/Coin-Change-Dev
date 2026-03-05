@@ -26,7 +26,7 @@ function Navbar() {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             style={{
-              filter: 'drop-shadow(0 4px 12px rgba(236, 72, 153, 0.6))',
+              filter: 'drop-shadow(0 4px 12px rgba(37, 99, 235, 0.5))',
             }}
           >
             <defs>
@@ -39,15 +39,15 @@ function Navbar() {
               >
                 <stop
                   offset="0%"
-                  style={{ stopColor: '#60a5fa', stopOpacity: 1 }}
+                  style={{ stopColor: '#2563eb', stopOpacity: 1 }}
                 />
                 <stop
                   offset="50%"
-                  style={{ stopColor: '#ec4899', stopOpacity: 1 }}
+                  style={{ stopColor: '#3b82f6', stopOpacity: 1 }}
                 />
                 <stop
                   offset="100%"
-                  style={{ stopColor: '#a855f7', stopOpacity: 1 }}
+                  style={{ stopColor: '#60a5fa', stopOpacity: 1 }}
                 />
               </linearGradient>
               <linearGradient
@@ -59,11 +59,11 @@ function Navbar() {
               >
                 <stop
                   offset="0%"
-                  style={{ stopColor: '#f472b6', stopOpacity: 1 }}
+                  style={{ stopColor: '#0ea5e9', stopOpacity: 1 }}
                 />
                 <stop
                   offset="100%"
-                  style={{ stopColor: '#60a5fa', stopOpacity: 1 }}
+                  style={{ stopColor: '#3b82f6', stopOpacity: 1 }}
                 />
               </linearGradient>
               <linearGradient
@@ -75,11 +75,11 @@ function Navbar() {
               >
                 <stop
                   offset="0%"
-                  style={{ stopColor: '#a855f7', stopOpacity: 1 }}
+                  style={{ stopColor: '#1e3a8a', stopOpacity: 1 }}
                 />
                 <stop
                   offset="100%"
-                  style={{ stopColor: '#ec4899', stopOpacity: 1 }}
+                  style={{ stopColor: '#2563eb', stopOpacity: 1 }}
                 />
               </linearGradient>
             </defs>
