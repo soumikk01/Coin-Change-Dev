@@ -162,6 +162,7 @@ function AdminPage() {
                     <th>Name</th>
                     <th>Email</th>
                     <th>Role</th>
+                    <th>Provider</th>
                     <th>Registered</th>
                   </tr>
                 </thead>
@@ -179,6 +180,13 @@ function AdminPage() {
                       <td>
                         <span className={`role-badge ${user.role}`}>
                           {user.role}
+                        </span>
+                      </td>
+                      <td>
+                        <span
+                          className={`provider-badge ${user.provider || 'email'}`}
+                        >
+                          {user.provider === 'google' ? 'Google' : 'Email'}
                         </span>
                       </td>
                       <td className="date-cell">

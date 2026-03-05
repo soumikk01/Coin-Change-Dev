@@ -154,6 +154,7 @@ router.post('/google', async (req, res) => {
     }
 
     const googleUser = await googleResponse.json();
+    console.log('🔍 Google User Info received:', JSON.stringify(googleUser));
 
     if (!googleUser.email) {
       return res.status(400).json({ message: 'Email not provided by Google' });
@@ -171,9 +172,11 @@ router.post('/google', async (req, res) => {
         Math.random().toString(36).slice(-10) +
         Math.random().toString(36).slice(-10);
       const hashedPassword = await bcrypt.hash(randomPassword, 10);
-      const userId = userDB.create(name, email, hashedPassword);
+      const userId = userDB.create(name, email, hashedPassword, 'google');
       user = userDB.findById(userId);
-      console.log(`\u2705 New user registered via Google: ${email}`);
+      console.log(
+        `✅ New user registered via Google: ${email} (ID: ${userId})`
+      );
     } else {
       console.log(`\u2705 User logged in via Google: ${email}`);
     }
