@@ -1,24 +1,25 @@
 {
-    "name": "coinchanger-backend",
-    "version": "1.0.0",
-    "description": "Backend API for CoinChanger with SQLite database",
-    "main": "server.js",
-    "type": "commonjs",
-    "scripts": {
-        "dev": "node server.js",
-        "start": "node server.js",
-        "format": "prettier --write \"**/*.{js,json}\""
-    },
-    "dependencies": {
-        "bcryptjs": "^2.4.3",
-        "cors": "^2.8.5",
-        "dotenv": "^17.3.1",
-        "express": "^4.18.2",
-        "google-auth-library": "^10.6.1",
-        "jsonwebtoken": "^9.0.2",
-        "sql.js": "^1.9.0"
-    },
-    "devDependencies": {
-        "prettier": "^3.8.1"
-    }
+  "name": "coinchanger-backend",
+  "version": "1.0.0",
+  "description": "Backend API for CoinChanger with SQLite database",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'No build step required for backend'",
+    "format": "prettier --write \"**/*.{js,json}\""
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.3.1",
+    "express": "^4.18.2",
+    "google-auth-library": "^10.6.1",
+    "jsonwebtoken": "^9.0.2",
+    "sql.js": "^1.9.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1"
+  }
 }
