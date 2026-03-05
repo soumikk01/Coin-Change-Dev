@@ -50,9 +50,20 @@ async function start() {
     console.log(`\n🚀 Server running on http://localhost:${PORT}`);
     console.log(`📊 Database: SQLite (local file)`);
     console.log(`\n📋 Available endpoints:`);
-    console.log(`   POST /api/auth/signup - Register new user`);
-    console.log(`   POST /api/auth/login  - Login user`);
-    console.log(`   GET  /api/admin/users - View all users (admin only)`);
+    console.log(`   POST /api/auth/signup                - Register new user`);
+    console.log(`   POST /api/auth/login                 - Login user`);
+    console.log(
+      `   GET  /api/admin/users                - View all users (admin only)`
+    );
+    console.log(
+      `   POST /api/calculations/calculate     - Run coin-change algorithm (public)`
+    );
+    console.log(
+      `   POST /api/calculations/save          - Save a calculation (auth required)`
+    );
+    console.log(
+      `   GET  /api/calculations/history       - Get user history (auth required)`
+    );
     console.log(`\n👤 Default Admin: admin@coinchanger.com / admin123`);
   });
 }

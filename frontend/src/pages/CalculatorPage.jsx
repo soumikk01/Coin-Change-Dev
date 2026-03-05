@@ -16,7 +16,7 @@ import {
   parseDenoms,
   greedyChange,
   dpMinCoinsList,
-} from '../utils/coinAlgorithms';
+} from '../utils/coinChangeUtils';
 import './CalculatorPage.scss';
 
 // Register ChartJS components
